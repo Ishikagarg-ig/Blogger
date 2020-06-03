@@ -93,7 +93,12 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Blog App'),
+        title: Text(
+          'Blogger',
+          style: TextStyle(
+            fontFamily: 'Pacifico',
+          ),
+        ),
       ),
       body:Padding(
         padding: EdgeInsets.all(15.0),

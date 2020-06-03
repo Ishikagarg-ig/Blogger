@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'Authentication.dart';
 import 'PhotoUpload.dart';
 import 'Posts.dart';
+//import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:firebase_database/firebase_database.dart';
 
 class HomePage extends StatefulWidget {
@@ -64,7 +65,19 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Home'),
+        title: Text(
+            'Blogger',
+          style: TextStyle(
+            fontFamily: 'Pacifico',
+          ),
+        ),
+            actions: <Widget>[
+              new IconButton(
+                  icon: new Icon(Icons.person),
+                  tooltip: 'Air it',
+                  onPressed: _logoutUser,
+              ),
+        ],
       ),
       body: Container(
         child: postsList.length==0 ? Text('NO Blog Posts available') :ListView.builder(
@@ -74,30 +87,45 @@ class _HomePageState extends State<HomePage> {
             }
         ),
       ),
-      bottomNavigationBar: BottomAppBar(
-         color: Colors.pink,
-
-        child: Container(
-          margin: const EdgeInsets.only(left:70.0 , right: 70.0),
-
-         child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          mainAxisSize: MainAxisSize.max,
-
-          children: <Widget>[
-            IconButton(
-              icon: Icon(Icons.person_outline),
-              iconSize: 50,
-              color: Colors.white,
-
-              onPressed: _logoutUser,
-            ),
-            IconButton(
-                icon: Icon(Icons.add_a_photo),
-                iconSize: 50,
-                color: Colors.white,
-
-                onPressed: (){
+//      bottomNavigationBar: BottomAppBar(
+//         color: Colors.pink,
+//
+//        child: Container(
+//          margin: const EdgeInsets.only(left:70.0 , right: 70.0),
+//
+//         child: Row(
+//          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//          mainAxisSize: MainAxisSize.max,
+//
+//          children: <Widget>[
+//            IconButton(
+//              icon: Icon(Icons.person_outline),
+//              iconSize: 50,
+//              color: Colors.white,
+//
+//              onPressed: _logoutUser,
+//            ),
+//            IconButton(
+//                icon: Icon(Icons.add_a_photo),
+//                iconSize: 50,
+//                color: Colors.white,
+//
+//                onPressed: (){
+//                  Navigator.push(
+//                      context,
+//                      MaterialPageRoute(builder: (context){
+//                        return PhotoUploadPage();
+//                      },
+//                      ),
+//                  );
+//                },
+//            ),
+//          ],
+//        ),
+//        ),
+//      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: (){
                   Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context){
@@ -106,10 +134,8 @@ class _HomePageState extends State<HomePage> {
                       ),
                   );
                 },
-            ),
-          ],
-        ),
-        ),
+        tooltip: 'Add Image',
+        child: Icon(Icons.add_a_photo),
       ),
     );
   }
